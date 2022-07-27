@@ -1,12 +1,30 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+      <Navbar/>
+      <router-view/>
+      <Footer/>
   </div>
 </template>
+<script>
+import {mapActions}  from 'vuex'
+
+import Footer  from '@/views/FooterView.vue'
+import Navbar  from '@/views/NavbarView.vue'
+export default {
+  name: 'App',
+  components: {
+    Footer,Navbar
+    },
+
+methods:{
+...mapActions (["getData1"])
+
+},
+mounted(){
+  this.getData1()
+}
+}
+</script>
 
 <style>
 #app {
